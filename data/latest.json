@@ -1,0 +1,79 @@
+{
+  "title": "红果漫剧看板",
+  "accountName": "一多一看剧场",
+  "asOf": "2026-10-26",
+  "asOfNote": "创作者中心延迟约 1 天",
+  "refreshNote": "本页由日报自动刷新",
+  "banner": "《急诊科》日播自 10/24–25 峰值回落，第 2 集后续看掉到约两成半、中后期趴在个位数；工作台累计漫剧收益仍为 0。",
+  "metrics": {
+    "plays7d": {
+      "value": "16,378",
+      "label": "近 7 天播放",
+      "subtitle": "较 10/25 快照 8,400 抬升"
+    },
+    "playsDay": {
+      "value": "7,978",
+      "label": "当日播放",
+      "subtitle": "10/26，自峰值回落",
+      "warn": true
+    },
+    "favorites": {
+      "value": "117",
+      "label": "累计收藏",
+      "subtitle": "10/25 快照为 45"
+    },
+    "ctr": {
+      "value": "6.56%",
+      "label": "累计点击率",
+      "subtitle": "10/25 为 6.50%"
+    }
+  },
+  "headings": {
+    "dramas": "在播漫剧",
+    "archive": "剧目档案",
+    "snapshots": "快照对比",
+    "retention": "续看率（已知集）"
+  },
+  "dramaColumns": ["剧名", "上线", "近7天播放", "当日播放", "收藏", "点击率", "收益", "状态"],
+  "dramas": [
+    {
+      "title": "急诊科：我能看见病患提示词",
+      "launched": "10/25 11:32",
+      "plays7d": "16,378",
+      "playsDay": "7,978",
+      "favorites": "117",
+      "ctr": "6.56%",
+      "revenue": "0",
+      "status": "偏弱回落"
+    }
+  ],
+  "archive": [
+    { "label": "账号", "value": "一多一看剧场" },
+    { "label": "版权机构", "value": "唐山乐美文化传媒有限公司" },
+    { "label": "剧名", "value": "急诊科：我能看见病患提示词" },
+    { "label": "上线时间", "value": "2026-10-25 11:32" },
+    { "label": "审核 / 下架", "value": "未见异常" },
+    { "label": "累计漫剧收益", "value": "0" }
+  ],
+  "snapshots": {
+    "columns": ["指标", "截至 10/25", "截至 10/26", "变化"],
+    "rows": [
+      { "metric": "近 7 天播放", "prev": "8,400", "current": "16,378", "delta": "+7,978" },
+      { "metric": "累计收藏", "prev": "45", "current": "117", "delta": "+72" },
+      { "metric": "累计点击率", "prev": "6.50%", "current": "6.56%", "delta": "+0.06pt" },
+      { "metric": "首集完播率", "prev": "21.65%", "current": "—", "delta": "仅 10/25 有读数" },
+      { "metric": "人均集数", "prev": "约 1 集", "current": "—", "delta": "仅 10/25 有读数" }
+    ]
+  },
+  "retention": {
+    "bars": [
+      { "label": "第 1 集", "width": 60, "text": "约 60%" },
+      { "label": "第 2 集", "width": 25, "text": "约 25%" },
+      { "label": "中后期", "width": 5, "text": "个位数" }
+    ],
+    "note": "能看下去的人中后期单集观看进度大约六到七成；第 60 集约 40.69%。"
+  },
+  "footerNotes": ["公开静态页 · 来源 creator.shortdramas.com"],
+  "generatedAt": "2026-10-28",
+  "timezone": "Asia/Shanghai"
+}

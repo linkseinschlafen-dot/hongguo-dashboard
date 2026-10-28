@@ -21,6 +21,8 @@ jobs:
       - uses: actions/configure-pages@v5
         with:
           enablement: true
+      - name: Build site from data/latest.json
+        run: node scripts/build-site.mjs
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site
