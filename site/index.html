@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="robots" content="noindex" />
+  <title>红果漫剧看板</title>
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --card: #fff;
+      --text: #1a1a1a;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --warn: #b45309;
+      --warn-bg: #fff7ed;
+      --accent: #2563eb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
+        "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 16px 16px 40px;
+    }
+    .wrap { max-width: 960px; margin: 0 auto; }
+    h1 { font-size: 1.35rem; margin: 0 0 4px; }
+    .sub { color: var(--muted); font-size: 0.875rem; margin-bottom: 16px; }
+    .banner {
+      background: var(--warn-bg);
+      color: var(--warn);
+      border: 1px solid #fed7aa;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+    }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    @media (min-width: 640px) {
+      .metrics { grid-template-columns: repeat(4, 1fr); }
+    }
+    .metric {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
+    }
+    .metric .v { font-size: 1.35rem; font-weight: 650; letter-spacing: -0.02em; }
+    .metric .l { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+    .metric .d { font-size: 0.7rem; color: var(--muted); margin-top: 4px; }
+    .metric.warn .v { color: var(--warn); }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+    }
+    .card h2 {
+      font-size: 0.95rem;
+      margin: 0 0 10px;
+      font-weight: 650;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      min-width: 560px;
+    }
+    th, td {
+      text-align: left;
+      padding: 8px 6px;
+      border-bottom: 1px solid var(--line);
+      white-space: nowrap;
+    }
+    th { color: var(--muted); font-weight: 500; font-size: 0.75rem; }
+    td.num, th.num { text-align: right; }
+    .pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--warn-bg);
+      color: var(--warn);
+      font-size: 0.75rem;
+    }
+    .props { font-size: 0.875rem; }
+    .props dt {
+      color: var(--muted);
+      font-size: 0.75rem;
+      margin-top: 8px;
+    }
+    .props dd { margin: 0; }
+    .bars { display: flex; flex-direction: column; gap: 10px; }
+    .bar-row { display: grid; grid-template-columns: 72px 1fr 64px; gap: 8px; align-items: center; font-size: 0.8rem; }
+    .bar-track { height: 10px; background: #eef2ff; border-radius: 999px; overflow: hidden; }
+    .bar-fill { height: 100%; background: var(--accent); border-radius: 999px; }
+    .foot {
+      color: var(--muted);
+      font-size: 0.75rem;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>红果漫剧看板</h1>
+    <p class="sub">账号「一多一看剧场」· 数据更新至 <strong id="asOf">2026-10-26</strong>（创作者中心延迟约 1 天）· 本页由日报自动刷新</p>
+
+    <div class="banner" id="banner">
+      《急诊科》日播自 10/24–25 峰值回落，第 2 集后续看掉到约两成半、中后期趴在个位数；工作台累计漫剧收益仍为 0。
+    </div>
+
+    <div class="metrics">
+      <div class="metric">
+        <div class="v" id="mPlays7d">16,378</div>
+        <div class="l">近 7 天播放</div>
+        <div class="d">较 10/25 快照 8,400 抬升</div>
+      </div>
+      <div class="metric warn">
+        <div class="v" id="mPlaysDay">7,978</div>
+        <div class="l">当日播放</div>
+        <div class="d">10/26，自峰值回落</div>
+      </div>
+      <div class="metric">
+        <div class="v" id="mFav">117</div>
+        <div class="l">累计收藏</div>
+        <div class="d">10/25 快照为 45</div>
+      </div>
+      <div class="metric">
+        <div class="v" id="mCtr">6.56%</div>
+        <div class="l">累计点击率</div>
+        <div class="d">10/25 为 6.50%</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>在播漫剧</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>剧名</th>
+            <th>上线</th>
+            <th class="num">近7天播放</th>
+            <th class="num">当日播放</th>
+            <th class="num">收藏</th>
+            <th class="num">点击率</th>
+            <th class="num">收益</th>
+            <th>状态</th>
+          </tr>
+        </thead>
+        <tbody id="dramaRows">
+          <tr>
+            <td>急诊科：我能看见病患提示词</td>
+            <td>10/25 11:32</td>
+            <td class="num">16,378</td>
+            <td class="num">7,978</td>
+            <td class="num">117</td>
+            <td class="num">6.56%</td>
+            <td class="num">0</td>
+            <td><span class="pill">偏弱回落</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>剧目档案</h2>
+      <dl class="props">
+        <dt>账号</dt><dd>一多一看剧场</dd>
+        <dt>版权机构</dt><dd>唐山乐美文化传媒有限公司</dd>
+        <dt>剧名</dt><dd>急诊科：我能看见病患提示词</dd>
+        <dt>上线时间</dt><dd>2026-10-25 11:32</dd>
+        <dt>审核 / 下架</dt><dd>未见异常</dd>
+        <dt>累计漫剧收益</dt><dd>0</dd>
+      </dl>
+    </div>
+
+    <div class="card">
+      <h2>快照对比</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>指标</th>
+            <th class="num">截至 10/25</th>
+            <th class="num">截至 10/26</th>
+            <th class="num">变化</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>近 7 天播放</td><td class="num">8,400</td><td class="num">16,378</td><td class="num">+7,978</td></tr>
+          <tr><td>累计收藏</td><td class="num">45</td><td class="num">117</td><td class="num">+72</td></tr>
+          <tr><td>累计点击率</td><td class="num">6.50%</td><td class="num">6.56%</td><td class="num">+0.06pt</td></tr>
+          <tr><td>首集完播率</td><td class="num">21.65%</td><td class="num">—</td><td class="num">仅 10/25 有读数</td></tr>
+          <tr><td>人均集数</td><td class="num">约 1 集</td><td class="num">—</td><td class="num">仅 10/25 有读数</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>续看率（已知集）</h2>
+      <div class="bars">
+        <div class="bar-row">
+          <span>第 1 集</span>
+          <div class="bar-track"><div class="bar-fill" style="width:60%"></div></div>
+          <span>约 60%</span>
+        </div>
+        <div class="bar-row">
+          <span>第 2 集</span>
+          <div class="bar-track"><div class="bar-fill" style="width:25%"></div></div>
+          <span>约 25%</span>
+        </div>
+        <div class="bar-row">
+          <span>中后期</span>
+          <div class="bar-track"><div class="bar-fill" style="width:5%"></div></div>
+          <span>个位数</span>
+        </div>
+      </div>
+      <p class="foot">能看下去的人中后期单集观看进度大约六到七成；第 60 集约 40.69%。</p>
+    </div>
+
+    <p class="foot">公开静态页 · 来源 creator.shortdramas.com · 页面生成时间 <span id="generatedAt">2026-10-28</span>（Asia/Shanghai）</p>
+  </div>
+</body>
+</html>
